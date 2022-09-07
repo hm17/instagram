@@ -1,4 +1,4 @@
-package com.hm17.instagram.entity;
+package com.hm17.instagram.account;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

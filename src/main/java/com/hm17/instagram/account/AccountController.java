@@ -1,4 +1,4 @@
-package com.hm17.instagram.controller;
+package com.hm17.instagram.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hm17.instagram.entity.Account;
-import com.hm17.instagram.repository.AccountRepository;
-
 @Controller
-@RequestMapping(path="/instagram/accounts")
-public class MainController {
+@RequestMapping(path="/instagram/api/accounts")
+public class AccountController {
 
 	@Autowired
 	private AccountRepository accountRepository;
+	
+	@Autowired
+	private AccountService accountService;
 	
 	@PostMapping(path="/add")
 	public @ResponseBody String addAccount(@RequestParam String username,
@@ -26,7 +26,7 @@ public class MainController {
 		return "Saved new account with username: " + username + " and address: " + address;
 	}
 	
-	@GetMapping(path="/all")
+	@GetMapping
 	public @ResponseBody Iterable<Account> getAllUsers() {
 		return accountRepository.findAll();
 	}
