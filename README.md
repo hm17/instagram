@@ -15,3 +15,7 @@ Use maven and run in terminal with the command: <br>
 <br>
 Send curl message in terminal to get all accounts<br>
 `curl 'localhost:8080/instagram/accounts/all'`
+
+<br>
+Add a single account<br>
+`curl localhost:8080/instagram/accounts/add -d username=hm17 -d address=0x0`
