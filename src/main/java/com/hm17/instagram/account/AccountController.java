@@ -11,23 +11,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(path="/instagram/api/accounts")
 public class AccountController {
-
-	@Autowired
-	private AccountRepository accountRepository;
 	
 	@Autowired
 	private AccountService accountService;
 	
 	@PostMapping(path="/add")
 	public @ResponseBody String addAccount(@RequestParam String username,
-			@RequestParam String address) {
-		Account a = new Account(username, address);
-		accountRepository.save(a);
+			@RequestParam String address) throws Exception {
+		accountService.addUser(username, address);
 		return "Saved new account with username: " + username + " and address: " + address;
 	}
 	
 	@GetMapping
-	public @ResponseBody Iterable<Account> getAllUsers() {
-		return accountRepository.findAll();
+	public @ResponseBody Iterable<Account> getAllAccounts() {
+		return accountService.getAccounts();
 	}
 }
